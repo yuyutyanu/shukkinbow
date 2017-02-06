@@ -13,12 +13,14 @@ class CreateTUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_User', function (Blueprint $table) {
+        Schema::create('t_user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('google_id');
             $table->string('name');
             $table->string('email');
             $table->string('avatar_url');
+            $table->increments('company_id');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateTUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_User');
+        Schema::dropIfExists('t_user');
     }
 }

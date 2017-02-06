@@ -13,12 +13,11 @@ class CreateTAttendanceRecordTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_AttendanceRecord', function (Blueprint $table) {
+        Schema::create('t_attendancerecord', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
             $table->datetime('start_time');
             $table->datetime('end_time');
-            $table->datetime('working_time');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTAttendanceRecordTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_AttendanceRecord');
+        Schema::dropIfExists('t_attendancerecord');
     }
 }

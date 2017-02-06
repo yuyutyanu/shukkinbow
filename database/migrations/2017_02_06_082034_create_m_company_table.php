@@ -13,11 +13,13 @@ class CreateMCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_Company', function (Blueprint $table) {
-            $table->increments('company_id');
+        Schema::create('m_company', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('company_name');
             $table->string('company_address');
             $table->string('phone_number');
+            $table->string('company_code');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateMCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_Company');
+        Schema::dropIfExists('m_company');
     }
 }
