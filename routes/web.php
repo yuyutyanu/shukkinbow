@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+ *  social login in google
+ */
+Route::get('auth/google', 'GoogleAuthController@redirectToProvider');
+Route::get('auth/google/callback', 'GoogleAuthController@handleProviderCallback');
