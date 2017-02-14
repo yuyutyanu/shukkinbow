@@ -17,6 +17,6 @@
     </div>
 
     <div class="bottom-box">
-        <div class="stop"><a href="/work_end">STOP</a></div>
+        <div class="stop"><a href="/end">STOP</a></div>
     </div>
 @endsection

@@ -31,7 +31,7 @@
     </div>
     <div class="bottom-box">
         <div class="start">
-            <a href="/count_work_time">START</a>
+            <a href="/count">START</a>
         </div>
     </div>
 

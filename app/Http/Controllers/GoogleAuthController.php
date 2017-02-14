@@ -26,6 +26,6 @@ class GoogleAuthController extends Controller
         $user = Socialite::driver('google')->user();
 
         // $user->token;
-        return redirect('/work_start');
+        return redirect('/start');
     }
 }

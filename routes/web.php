@@ -12,16 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('/social_sign_in');
+    return view('/signin');
 });
-Route::get('/count_work_time',function(){
-   return view('/count_work_time');
+Route::get('/count',function(){
+   return view('/count');
 });
-Route::get('/work_start',function(){
-    return view('/work_start');
+Route::get('/start',function(){
+    return view('/start');
 });
-Route::get('/work_end',function(){
-   return view('/work_end');
+Route::get('/end',function(){
+   return view('/end');
 });
 /*
  *  social login in google
