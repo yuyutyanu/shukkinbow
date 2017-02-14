@@ -5,7 +5,6 @@
     text-align: center;
     color:white;
     font-size:25px;
-    margin: 0 0 140px 0;
 }
 .time-wrapper p{
     padding-bottom:45px;
@@ -13,8 +12,7 @@
 .end{
     background-color: #fff;
     width: 250px;
-    margin: 40px auto;
-    margin-bottom: 40px;
+    margin: 0 auto;
     text-align: center;
     letter-spacing: 1px;
 }
