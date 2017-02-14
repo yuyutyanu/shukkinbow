@@ -5,9 +5,11 @@
     text-align: center;
     color:white;
     font-size:25px;
+    height:150px;
 }
 .time-wrapper p{
-    padding-bottom:45px;
+    padding-bottom:15px;
+    box-sizing: border-box;
 }
 .end{
     background-color: #fff;
