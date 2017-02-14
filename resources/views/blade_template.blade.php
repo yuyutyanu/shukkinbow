@@ -11,7 +11,15 @@
 <body>
 <div class="background">
     <div class="container">
-        @yield('main')
+        <div class="top-box">
+            @yield('top')
+        </div>
+        <div class="middle-box">
+            @yield('middle')
+        </div>
+        <div class="bottom-box">
+            @yield('bottom')
+        </div>
     </div>
 </div>
 </body>

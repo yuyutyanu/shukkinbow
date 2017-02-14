@@ -2,19 +2,20 @@
 
 @section('title','労働時間計測')
 @section('css','/count.css')
-@section('main')
-    <div class="time-wrapper top-box">
+
+@section('top')
+    <div class="time-wrapper">
         <p class="count_work_time">00:30:35</p>
     </div>
+@endsection
 
-    <div class="center-box">
+@section('middle')
         <div class="count_ball-wrapper">
             <div class="ball"></div>
             <div class="shadow"></div>
         </div>
-    </div>
+@endsection
 
-    <div class="bottom-box">
+@section('bottom')
         <div class="stop"><a href="/end">STOP</a></div>
-    </div>
 @endsection
