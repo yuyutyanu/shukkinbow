@@ -1,0 +1,11 @@
+.background{
+    width:480px;
+    padding:150px 0px 90px 0px;
+    box-sizing: border-box;
+    margin:0 auto;
+    height:100%;
+}
+.container{
+    width:370px;
+    margin:0 auto;
+}

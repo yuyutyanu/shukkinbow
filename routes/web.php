@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('/social_login');
+    return view('/social_sign_in');
 });
 Route::get('/count_work_time',function(){
    return view('/count_work_time');

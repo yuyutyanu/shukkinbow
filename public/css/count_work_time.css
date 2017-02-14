@@ -1,0 +1,34 @@
+.background {
+    background-color: #2A818A;
+}
+.count_work_time{
+    font-size: 90px;
+    text-align: center;
+    color:#fff;
+    position: relative;
+    font-family: 'Yantramanav', sans-serif;
+}
+.count_work_time:after{
+    content: "";
+    position: absolute;
+    left: -40px;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px solid #fff;
+    margin-left:50%;
+    width:80px;
+}
+.stop{
+    background-color: #fff;
+    width: 250px;
+    margin: 40px auto;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.stop a{
+    padding: 20px 0;
+    display:block;
+    color: #2A818A;
+    text-decoration: none;
+}

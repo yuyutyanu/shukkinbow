@@ -1,0 +1,79 @@
+.background {
+    background-color: #F5F5F5;
+}
+.current_time{
+    font-size: 105px;
+    text-align: center;
+    color:#6C6C6C;
+    position: relative;
+    font-family: 'Yantramanav', sans-serif;
+}
+.current_time:after{
+    content: "";
+    position: absolute;
+    left: -40px;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px solid #2A818A;
+    margin-left:50%;
+    width:80px;
+}
+
+.start{
+    background-color: #2A818A;
+    width: 250px;
+    margin: 40px auto;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.start a{
+    padding: 20px 0;
+    display:block;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+
+/*
+*turn box
+*/
+.radio-wrapper {
+    text-align: center;
+    margin-top:100px;
+}
+.radio {
+    font-size: 5px;
+    color: #fff;
+    display: inline-block !important;
+}
+.radio p {
+    -webkit-transition: all 100ms ease-in-out 0ms;
+    -moz-transition: all 100ms ease-in-out 0ms;
+    -ms-transition: all 100ms ease-in-out 0ms;
+    -o-transition: all 100ms ease-in-out 0ms;
+    transition: all 100ms ease-in-out 0ms;
+    line-height: 3.5;
+    color: rgba(255, 255, 255, 0.5);
+}
+.radio p:hover {
+    color: rgba(255, 255, 255, 1);
+}
+.radio.turnBoxCurrentFace2 > .turnBoxFaceNum1 {
+    background-color: #EE6557;
+}
+.radio.turnBoxCurrentFace2 > .turnBoxFaceNum2 {
+    background-color: #EE6557;
+}
+.radio .turnBoxFaceNum1 {
+    background-color: #262626;
+}
+.radio .turnBoxFaceNum2 {
+    background-color: #262626;
+}
+.radio .turnBoxFaceNum2 p {
+    color: #fff;
+}
