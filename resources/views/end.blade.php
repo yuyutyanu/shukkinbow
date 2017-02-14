@@ -1,7 +1,7 @@
 @extends('blade_template')
 
 @section('title','勤務終了')
-@section('css','/work_end.css')
+@section('css','/end.css')
 @section('main')
     <div class="top-box">
         <div class="time-wrapper">
@@ -14,6 +14,6 @@
 
     </div>
     <div class="bottom-box">
-        <div class="end"><a href="/start">X</a></div>
+        <div class="end"><a href="/start"></a></div>
     </div>
 @endsection

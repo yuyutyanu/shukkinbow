@@ -53,7 +53,7 @@
     -ms-transition: all 100ms ease-in-out 0ms;
     -o-transition: all 100ms ease-in-out 0ms;
     transition: all 100ms ease-in-out 0ms;
-    line-height: 3.5;
+    line-height: 2.5;
     color: rgba(255, 255, 255, 0.5);
 }
 .radio p:hover {
@@ -73,4 +73,33 @@
 }
 .radio .turnBoxFaceNum2 p {
     color: #fff;
+}
+
+.office{
+    position: relative;
+}
+.office:after{
+    content:"";
+    position: absolute;
+    background-image:url('/img/office.png');
+    height:24px;
+    width:24px;
+    bottom:-18px;
+    right:0px;
+    left:0px;
+    margin:auto;
+}
+.remote{
+    position: relative;
+}
+.remote:after{
+    content:"";
+    position: absolute;
+    background-image:url('/img/remote.png');
+    height:24px;
+    width:24px;
+    bottom:-18px;
+    right:0px;
+    left:-4px;
+    margin:auto;
 }

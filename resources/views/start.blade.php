@@ -1,7 +1,7 @@
 @extends('blade_template')
 
 @section('title','勤務開始')
-@section('css','/work_start.css')
+@section('css','/start.css')
 @section('main')
     <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -12,18 +12,18 @@
         <div class="radio-wrapper">
             <div class="radio">
                 <div>
-                    <p class="turnBoxButton">OFFICE</p>
+                    <p class="turnBoxButton office">OFFICE</p>
                 </div>
                 <div>
-                    <p>OFFICE</p>
+                    <p class="office">OFFICE</p>
                 </div>
             </div>
             <div class="radio">
                 <div>
-                    <p class="turnBoxButton">REMOTE</p>
+                    <p class="turnBoxButton remote">REMOTE</p>
                 </div>
                 <div>
-                    <p>REMOTE</p>
+                    <p class="remote">REMOTE</p>
                 </div>
             </div>
         </div>

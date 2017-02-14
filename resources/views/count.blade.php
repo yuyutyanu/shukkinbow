@@ -1,7 +1,7 @@
 @extends('blade_template')
 
 @section('title','労働時間計測')
-@section('css','/count_work_time.css')
+@section('css','/count.css')
 @section('main')
     <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
 
