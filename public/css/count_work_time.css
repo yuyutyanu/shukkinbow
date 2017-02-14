@@ -52,7 +52,6 @@
     animation: animation 1s ease-in-out infinite;
     z-index:2;
     top:20px;
-    left:5px;
 }
 
 @keyframes animation
@@ -87,6 +86,7 @@
     border-radius:15px / 7px;
     background-color:#000;
     top:30px;
+    left:-5px;
 }
 
 @keyframes animation-shadow

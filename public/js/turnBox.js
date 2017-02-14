@@ -865,3 +865,8 @@ $.each(radio.parent().children(".radio"), function(key)
         radio.parent().children(".radio").not(self).turnBoxAnimate();
     });
 });
+$(radio.parent().children(".radio")[0]).turnBoxAnimate(
+    {
+        face: 2,
+        animation: false
+    });
