@@ -6,7 +6,6 @@
     text-align: center;
     color:#6C6C6C;
     position: relative;
-    font-family: 'Yantramanav', sans-serif;
 }
 .current_time:after{
     content: "";
@@ -53,8 +52,9 @@
     -ms-transition: all 100ms ease-in-out 0ms;
     -o-transition: all 100ms ease-in-out 0ms;
     transition: all 100ms ease-in-out 0ms;
-    line-height: 2.5;
     color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    padding-top:5px;
 }
 .radio p:hover {
     color: rgba(255, 255, 255, 1);
@@ -84,7 +84,8 @@
     background-image:url('/img/office.png');
     height:24px;
     width:24px;
-    bottom:-18px;
+    top:45px;
+    bottom:0px;
     right:0px;
     left:0px;
     margin:auto;
@@ -98,7 +99,8 @@
     background-image:url('/img/remote.png');
     height:24px;
     width:24px;
-    bottom:-18px;
+    top:45px;
+    bottom:0px;
     right:0px;
     left:-4px;
     margin:auto;

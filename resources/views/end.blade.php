@@ -14,6 +14,6 @@
 
     </div>
     <div class="bottom-box">
-        <div class="end"><a href="/start"></a></div>
+        <div class="end"><a href="/start">　</a></div>
     </div>
 @endsection

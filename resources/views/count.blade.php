@@ -3,10 +3,8 @@
 @section('title','労働時間計測')
 @section('css','/count.css')
 @section('main')
-    <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
-
     <div class="time-wrapper top-box">
-        <p class="count_work_time time">00:30:35</p>
+        <p class="count_work_time">00:30:35</p>
     </div>
 
     <div class="center-box">

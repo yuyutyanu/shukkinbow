@@ -3,7 +3,6 @@
 @section('title','勤務開始')
 @section('css','/start.css')
 @section('main')
-    <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <div class="top-box">
         <p class="current_time time">09:45</p>
