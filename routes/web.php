@@ -14,24 +14,17 @@
 Route::get('/', function () {
     return view('/signin');
 });
-Route::get('/count',function(){
-   return view('/count');
-});
-Route::post('/count',function(){
 
-    return redirect("/count");
+Route::group(['middleware' => ['google']], function () {
+    Route::get('/start',AttendanceController::class.'@start');
+    Route::get('/count',AttendanceController::class.'@count');
+    Route::get('/end',AttendanceController::class.'@end');
 });
-Route::get('/start',function(){
-    return view('/start');
-})->middleware('google');
-Route::get('/end',function(){
-   return view('/end');
-});
+
+//開始時刻と終了時刻のdb保存
 Route::get('/starttime',AttendanceController::class.'@addStartTime');
-Route::get('/endtime',AttendanceController::class."@addEndTime");
+Route::post('/endtime',AttendanceController::class."@addEndTime");
 
-/*
- *  social login in google
- */
-Route::get('auth/google', 'GoogleAuthController@redirectToProvider');
-Route::get('auth/google/callback','GoogleAuthController@handleProviderCallback');
+//socialite (google)
+Route::get('auth/google', GoogleAuthController::class.'@redirectToProvider');
+Route::get('auth/google/callback',GoogleAuthController::class.'@handleProviderCallback');

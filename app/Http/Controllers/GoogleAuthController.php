@@ -26,16 +26,28 @@ class GoogleAuthController extends Controller
     {
         $user = Socialite::driver('google')->user();
 
-        $shukkinbow->torken = $user->token;
-        $shukkinbow->refreshtoken = $user->refreshToken;
-        $shukkinbow->expiresin = $user->expiresIn;
-        $shukkinbow->google_id = $user->getId();
-        $shukkinbow->nickname = $user->getNickname();
-        $shukkinbow->name = $user->getName();
-        $shukkinbow->email = $user->getEmail();
-        $shukkinbow->avatar = $user->getAvatar();
-        $shukkinbow->company_id = 1;
-        $shukkinbow->save();
+        $arleady = $shukkinbow
+            ->where('google_id',$user->getId())
+            ->first();
+
+        //shukkinbowにユーザ情報を追加
+        if (empty($arleady)) {
+            $shukkinbow->torken = $user->token;
+            $shukkinbow->refreshtoken = $user->refreshToken;
+            $shukkinbow->expiresin = $user->expiresIn;
+            $shukkinbow->google_id = $user->getId();
+            $shukkinbow->nickname = $user->getNickname();
+            $shukkinbow->name = $user->getName();
+            $shukkinbow->email = $user->getEmail();
+            $shukkinbow->avatar = $user->getAvatar();
+            $shukkinbow->company_id = 1;
+            $shukkinbow->save();
+        }
+
+        //他の場所でdbからユーザ情報を取り出すためにid保存
+        $google_id = session()->get('google_id',[]);
+        $google_id[] = $user->getId();
+        session()->put('google_id',$google_id);
 
         return redirect('/start');
     }

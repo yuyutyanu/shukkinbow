@@ -18,6 +18,8 @@
 
 @section('bottom')
         <div class="stop"><button onclick="workEnd()">STOP</button></div>
-        <script src="/js/count.js"></script>
-        <script src="/js/attendance.js"></script>
+
+        <script>
+            countUp();
+        </script>
 @endsection

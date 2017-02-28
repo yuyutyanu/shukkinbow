@@ -18,11 +18,11 @@ class GoogleAuth
     public function handle($request, Closure $next)
     {
 
-//        $user = Socialite::driver('google')->user();
-//
-//        if (isEmpty($user)) {
-//            return redirect('/');
-//        }
+        $user = session()->get("google_id",[]);
+
+        if (Empty($user)) {
+            return redirect('/');
+        }
 
         return $next($request);
 

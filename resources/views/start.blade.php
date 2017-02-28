@@ -4,7 +4,7 @@
 @section('css','/start.css')
 
 @section('top')
-    <p class="current_time" id="time"></p>
+    <p class="current_time" id="current"></p>
 @endsection
 
 @section('middle')
@@ -33,6 +33,8 @@
         <button onclick="workStart()">START</button>
     </div>
 
-    <script src="/js/attendance.js"></script>
+    <script>
+        document.body.onload = getCurrentTime;
+    </script>
     <script type="text/javascript" src="/js/turnBox.js"></script>
 @endsection

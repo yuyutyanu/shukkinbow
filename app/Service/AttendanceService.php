@@ -1,5 +1,6 @@
 <?php
 namespace App\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AttendanceService
@@ -8,13 +9,20 @@ class AttendanceService
         $attendance->start_time = $request->get("start_time");
         $attendance->end_time = null;
         $attendance->save();
+
+        //終了時刻をdbに保存する時にレコード検索するためのid　
+        $attendance_id = session()->get("attendance_id",[]);
+        $attendance_id[] = $attendance->id;
+        session()->put("attendance_id",$attendance_id);
     }
 
-    public function addEndTime(Request $request) {
-        $end_time = $request->get('end_time');
-//        DB::table('t_attendancerecord')
-//            ->where($user->id)
-//            ->update(['end_time'=>"23:59:59"]);
-        return $end_time;
+    public function addEndTime(Request $request,$attendance) {
+        $attendance_id = session()->get('attendance_id',[]);
+
+        $attendance
+            ->where('id',$attendance_id)
+            ->update(['end_time' => $request->get('end_time')]);
+
+        session()->put("attendance_id",[]);
     }
 };
