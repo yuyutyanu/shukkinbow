@@ -10,11 +10,11 @@ body{
 }
 .container{
     max-width:480px;
-    height:350px;
+    height:380px;
     margin:0 auto;
 }
 .top-box{
-    height:150px;
+    height:180px;
     font-family: 'Yantramanav', sans-serif;
 }
 .middle-box{
