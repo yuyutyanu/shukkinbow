@@ -7,7 +7,8 @@ use Socialite;
 class GoogleAuthController extends Controller
 {
     /**
-     * Redirect the user to the Google authentication page.
+     * Redirect the user to the Google authenti
+     * cation page.
      *
      * @return Response
      */
@@ -24,8 +25,7 @@ class GoogleAuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-
-        // $user->token;
+        // session変数に＄userを格納する
         return redirect('/start');
     }
 }

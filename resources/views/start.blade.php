@@ -5,7 +5,7 @@
 
 @section('top')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <p class="current_time time">09:45</p>
+    <p class="current_time" id="time"></p>
 @endsection
 
 @section('middle')
@@ -33,5 +33,6 @@
     <div class="start">
         <a href="/count">START</a>
     </div>
+    <script src="/js/start.js"></script>
     <script type="text/javascript" src="/js/turnBox.js"></script>
 @endsection

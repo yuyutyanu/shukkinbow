@@ -19,7 +19,7 @@ Route::get('/count',function(){
 });
 Route::get('/start',function(){
     return view('/start');
-});
+});/*->middleware('google');*/
 Route::get('/end',function(){
    return view('/end');
 });
