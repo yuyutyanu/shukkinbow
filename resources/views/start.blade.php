@@ -4,7 +4,6 @@
 @section('css','/start.css')
 
 @section('top')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <p class="current_time" id="time"></p>
 @endsection
 
@@ -31,8 +30,9 @@
 
 @section('bottom')
     <div class="start">
-        <a href="/count">START</a>
+        <button onclick="workStart()">START</button>
     </div>
-    <script src="/js/start.js"></script>
+
+    <script src="/js/attendance.js"></script>
     <script type="text/javascript" src="/js/turnBox.js"></script>
 @endsection

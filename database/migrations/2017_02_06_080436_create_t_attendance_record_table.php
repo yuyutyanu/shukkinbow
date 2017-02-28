@@ -16,7 +16,7 @@ class CreateTAttendanceRecordTable extends Migration
         Schema::create('t_attendancerecord', function (Blueprint $table) {
             $table->increments('id');
             $table->datetime('start_time');
-            $table->datetime('end_time');
+            $table->datetime('end_time')->nullable();
             $table->timestamps();
         });
     }

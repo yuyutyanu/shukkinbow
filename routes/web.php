@@ -17,12 +17,19 @@ Route::get('/', function () {
 Route::get('/count',function(){
    return view('/count');
 });
+Route::post('/count',function(){
+
+    return redirect("/count");
+});
 Route::get('/start',function(){
     return view('/start');
-});/*->middleware('google');*/
+})->middleware('google');
 Route::get('/end',function(){
    return view('/end');
 });
+Route::get('/starttime',AttendanceController::class.'@addStartTime');
+Route::get('/endtime',AttendanceController::class."@addEndTime");
+
 /*
  *  social login in google
  */

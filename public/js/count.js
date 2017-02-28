@@ -22,7 +22,7 @@ function countUp(){
     if(sec < 10) { sec = "0" + sec; }
 
     var timer = hour + ':' + min + ':' + sec;
-    document.getElementById("time").innerHTML = timer;
+    document.getElementById("count_up").innerHTML = timer;
 
     setTimeout("countUp()", 1000);
 }

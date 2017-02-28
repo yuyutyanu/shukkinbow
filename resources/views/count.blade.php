@@ -5,7 +5,7 @@
 
 @section('top')
     <div class="time-wrapper">
-        <p class="count_work_time" id="time"></p>
+        <p class="count_work_time" id="count_up"></p>
     </div>
 @endsection
 
@@ -17,6 +17,7 @@
 @endsection
 
 @section('bottom')
-        <div class="stop"><a href="/end">STOP</a></div>
+        <div class="stop"><button onclick="workEnd()">STOP</button></div>
         <script src="/js/count.js"></script>
+        <script src="/js/attendance.js"></script>
 @endsection
