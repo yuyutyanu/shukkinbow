@@ -31,10 +31,14 @@ class AttendanceService
             ->where('id',$attendance_id)
             ->first();
 
-        $working_time = strtotime($attendance_info->end_time) - strtotime($attendance_info->start_time);
+        $start_time = strtotime($attendance_info->start_time);
+        $end_time = strtotime($attendance_info->end_time);
+        $working_time = $end_time - $start_time;
+
+        $attendance_info["start_time"] = date("H:i:s",$start_time);
+        $attendance_info["end_time"] = date("H:i:s",$end_time);
         $attendance_info["working_time"] = date("H:i:s",$working_time);
 
         return $attendance_info;
-
     }
 };

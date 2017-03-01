@@ -1,49 +1,61 @@
-var date,time;
+var year,month,day,hour,min,sec,date,time;
 
-function getCurrentTime(){
+function getToday(){
     var dtObj = new Date();
+    year = dtObj.getFullYear();
+    month = dtObj.getMonth()+1;
+    day = dtObj.getDate();
+    hour = dtObj.getHours();
+    min = dtObj.getMinutes();
+    sec = dtObj.getSeconds();
+}
 
-    var year = dtObj.getFullYear();
-    var month = dtObj.getMonth()+1;
-    var day = dtObj.getDate();
-    var hour = dtObj.getHours();
-    var min = dtObj.getMinutes();
-    var sec = dtObj.getSeconds();
 
+function modTimeFormat(){
     if(hour < 10) { hour = "0" + hour; }
     if(min < 10) { min = "0" + min; }
     if(sec < 10) { sec = "0" + sec; }
+}
+
+
+function dispCurrentTime(){
+    if(document.getElementById("current")) {
+        document.getElementById("current").innerHTML = time;
+    }
+}
+
+
+function getCurrentTime(){
+    getToday();
+    modTimeFormat();
 
     date = year+"-"+month+"-"+day;
     time = hour+":"+min+":"+sec;
 
-    //画面に現在時刻を表示する画面でのみ動作させる処理
-    if(document.getElementById("current")) {
-        document.getElementById("current").innerHTML = time;
-    }
+    dispCurrentTime(); // 現在時刻を表示させたい時だけ
 
     setTimeout('getCurrentTime()',1000);
 }
 
+
 var timer,start = new Date;
 function countUp(){
-    now = new Date();
+    var now = new Date();
 
-    datet = parseInt((now.getTime() - start.getTime()) / 1000);
+    time = parseInt((now.getTime() - start.getTime()) / 1000);
+    hour = parseInt(time / 3600);
+    min = parseInt((time / 60) % 60);
+    sec = time % 60;
 
-    hour = parseInt(datet / 3600);
-    min = parseInt((datet / 60) % 60);
-    sec = datet % 60;
-
-    if(hour < 10) { hour = "0" + hour; }
-    if(min < 10) { min = "0" + min; }
-    if(sec < 10) { sec = "0" + sec; }
+    modTimeFormat();
 
     timer = hour + ':' + min + ':' + sec;
+
     document.getElementById("count_up").innerHTML = timer;
 
     setTimeout("countUp()", 1000);
 }
+
 
 function workStart() {
     $.get("/starttime",
@@ -55,6 +67,7 @@ function workStart() {
     });
 }
 
+
 function workEnd() {
     getCurrentTime();
 
@@ -64,6 +77,7 @@ function workEnd() {
             working_time:timer,
         }
     ).done(function(){
+        document.cookie = 'timer = ' + false
         location.href="/end"
     });
 }

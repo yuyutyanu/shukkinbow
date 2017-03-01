@@ -5,8 +5,8 @@
 
 @section('top')
     <div class="time-wrapper">
-        <p>開始 - {{ $attendance_info->start_time }}</p>
-        <p id="current">終了 - {{ $attendance_info->end_time }}</p>
+        <p>開始時間- {{ $attendance_info->start_time }}</p>
+        <p>終了時間 - {{ $attendance_info->end_time }}</p>
         <p>勤務時間 - {{ $attendance_info->working_time }}</p>
     </div>
 @endsection
