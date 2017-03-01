@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Socialite;
 use App\t_user;
 
@@ -27,7 +28,7 @@ class GoogleAuthController extends Controller
         $user = Socialite::driver('google')->user();
 
         $arleady = $shukkinbow
-            ->where('google_id',$user->getId())
+            ->where('google_id', $user->getId())
             ->first();
 
         //shukkinbowにユーザ情報を追加
@@ -45,9 +46,9 @@ class GoogleAuthController extends Controller
         }
 
         //他の場所でdbからユーザ情報を取り出すためにid保存
-        $google_id = session()->get('google_id',[]);
+        $google_id = session()->get('google_id', []);
         $google_id[] = $user->getId();
-        session()->put('google_id',$google_id);
+        session()->put('google_id', $google_id);
 
         return redirect('/start');
     }

@@ -22,8 +22,8 @@ Route::group(['middleware' => ['google']], function () {
 });
 
 //開始時刻と終了時刻のdb保存
-Route::get('/starttime',AttendanceController::class.'@addStartTime');
-Route::post('/endtime',AttendanceController::class."@addEndTime");
+Route::get('/starttime',AttendanceController::class.'@startTime');
+Route::post('/endtime',AttendanceController::class."@endTime");
 
 //socialite (google)
 Route::get('auth/google', GoogleAuthController::class.'@redirectToProvider');

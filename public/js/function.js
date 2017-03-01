@@ -61,9 +61,7 @@ function workEnd() {
     $.post("/endtime",
         {
             end_time: date+" "+time,
-            count_time:timer,
-        },function(data){
-         console.log(data);
+            working_time:timer,
         }
     ).done(function(){
         location.href="/end"
