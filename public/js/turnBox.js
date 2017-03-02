@@ -870,3 +870,12 @@ $(radio.parent().children(".radio")[0]).turnBoxAnimate(
         face: 2,
         animation: false
     });
+
+//勤務地の設定
+work_location = "office";
+$('#office_work').click(function () {
+    work_location = "office"
+});
+$('#remote_work').click(function () {
+    work_location = "remote"
+});

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryTable extends Migration
+class CreateWorkLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_category', function (Blueprint $table) {
+        Schema::create('m_work_location', function (Blueprint $table) {
             $table->unsignedInteger('id');
             $table->string('location');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_category');
+        Schema::dropIfExists('m_work_location');
     }
 }

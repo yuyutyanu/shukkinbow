@@ -10,7 +10,7 @@
 @section('middle')
     <div class="radio-wrapper">
         <div class="radio">
-            <div>
+            <div id="office_work">
                 <p class="turnBoxButton office">OFFICE</p>
             </div>
             <div>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="radio">
-            <div>
+            <div id="remote_work">
                 <p class="turnBoxButton remote">REMOTE</p>
             </div>
             <div>

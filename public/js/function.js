@@ -29,7 +29,6 @@ function dispCurrentTime(){
     }
 }
 
-
 function getCurrentTime(){
     getToday();
 
@@ -38,19 +37,18 @@ function getCurrentTime(){
     setTimeout('getCurrentTime()',1000);
 }
 
-function getLocation(){
-
-}
 
 function workStart() {
     $.get("/starttime",
         {
-            start_time: date + " " + time
+            start_time: date + " " + time,
+            work_location : work_location
         }
     ).done(function(){
         location.href="/count"
     });
 }
+
 
 var timer;
 function countUp() {
@@ -66,6 +64,7 @@ function countUp() {
 
     setTimeout("countUp()", 1000);
 }
+
 
 function workEnd() {
     getCurrentTime();

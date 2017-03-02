@@ -15,6 +15,15 @@ class AttendanceService
         $attendance_id[] = $attendance->id;
         session()->put("attendance_id",$attendance_id);
     }
+    public function setLocation(Request $request, $attendance){
+        if ($request->get("work_location") === "office"){
+            $attendance->location_id = 1;
+        }else{
+            $attendance->location_id = 2;
+        }
+        $attendance->save();
+    }
+
     public function getCountTime($attendance,$current_time){
         $attendance_id = session()->get('attendance_id',[]);
 

@@ -24,6 +24,7 @@ class AttendanceController extends Controller{
     public function startTime(Request $request, AttendanceService $service, t_attendancerecord $attendance) {
         $service->switchCountFlag();
         $service->setStartTime($request, $attendance);
+        $service->setLocation($request, $attendance);
 
         return 0;
     }

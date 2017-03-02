@@ -17,6 +17,7 @@ class CreateTAttendanceRecordTable extends Migration
             $table->increments('id');
             $table->datetime('start_time');
             $table->datetime('end_time')->nullable();
+            $table->unsignedInteger('location_id')->default(1);
             $table->timestamps();
         });
     }
