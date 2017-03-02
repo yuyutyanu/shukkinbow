@@ -27,6 +27,11 @@ class AttendanceController extends Controller{
 
         return 0;
     }
+    public function countTime(Request $request, AttendanceService $service, t_attendancerecord $attendance){
+        $current_time = $request->get("current_time");
+        $current_time = $service->getCountTime($attendance,$current_time);
+        return $current_time;
+    }
 
     public function endtime(Request $request, AttendanceService $service, t_attendancerecord $attendance){
         $service->switchCountFlag();

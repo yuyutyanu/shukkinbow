@@ -15,6 +15,18 @@ class AttendanceService
         $attendance_id[] = $attendance->id;
         session()->put("attendance_id",$attendance_id);
     }
+    public function getCountTime($attendance,$current_time){
+        $attendance_id = session()->get('attendance_id',[]);
+
+        $attendance_info = $attendance
+            ->where('id',$attendance_id)
+            ->first();
+
+        $time = strtotime($current_time) - strtotime($attendance_info->start_time);
+        $time = date('H:i:s', $time);
+
+        return $time;
+    }
 
     public function setEndTime(Request $request,$attendance) {
         $attendance_id = session()->get('attendance_id',[]);

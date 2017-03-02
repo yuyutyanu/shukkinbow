@@ -11,6 +11,7 @@
 |
 */
 
+//ルーティング
 Route::get('/', function () {
     return view('/signin');
 })->middleware("count");
@@ -21,8 +22,9 @@ Route::group(['middleware' => ['google']], function () {
     Route::get('/end',AttendanceController::class.'@end')->middleware("start","count");
 });
 
-//開始時刻と終了時刻のdb保存
+//ロジック
 Route::get('/starttime',AttendanceController::class.'@startTime');
+Route::get('/counttime',AttendanceController::class.'@countTime');
 Route::post('/endtime',AttendanceController::class."@endTime");
 
 //socialite (google)

@@ -8,6 +8,11 @@ function getToday(){
     hour = dtObj.getHours();
     min = dtObj.getMinutes();
     sec = dtObj.getSeconds();
+
+    modTimeFormat();
+
+    date = year+"-"+month+"-"+day;
+    time = hour+":"+min+":"+sec;
 }
 
 
@@ -27,46 +32,40 @@ function dispCurrentTime(){
 
 function getCurrentTime(){
     getToday();
-    modTimeFormat();
-
-    date = year+"-"+month+"-"+day;
-    time = hour+":"+min+":"+sec;
 
     dispCurrentTime(); // 現在時刻を表示させたい時だけ
 
     setTimeout('getCurrentTime()',1000);
 }
 
+function getLocation(){
 
-var timer,start = new Date;
-function countUp(){
-    var now = new Date();
-
-    time = parseInt((now.getTime() - start.getTime()) / 1000);
-    hour = parseInt(time / 3600);
-    min = parseInt((time / 60) % 60);
-    sec = time % 60;
-
-    modTimeFormat();
-
-    timer = hour + ':' + min + ':' + sec;
-
-    document.getElementById("count_up").innerHTML = timer;
-
-    setTimeout("countUp()", 1000);
 }
-
 
 function workStart() {
     $.get("/starttime",
         {
-            start_time: date+" "+time,
+            start_time: date + " " + time
         }
     ).done(function(){
         location.href="/count"
     });
 }
 
+var timer;
+function countUp() {
+    getToday();
+    $.get("/counttime",{
+       current_time: date + " " + time
+    }, function (time) {
+            timer = time;
+        }
+    ).done(function () {
+        document.getElementById("count_up").innerHTML = timer;
+    });
+
+    setTimeout("countUp()", 1000);
+}
 
 function workEnd() {
     getCurrentTime();
