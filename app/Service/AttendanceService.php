@@ -39,6 +39,25 @@ class AttendanceService
         $attendance_info["end_time"] = date("H:i:s",$end_time);
         $attendance_info["working_time"] = date("H:i:s",$working_time);
 
+        $this->initAttendanceId();   //start middleware用　初期化
+
         return $attendance_info;
+    }
+
+    //計測中かのフラグ 切り替え
+    public function switchCountFlag(){
+        $count_flag = session()->get("count_flag",[]);
+        if($count_flag == true){
+            $count_flag = false;
+        }else{
+            $count_flag = true;
+        }
+        session()->forget("count_flag");
+        session()->put("count_flag",$count_flag);
+    }
+
+    public function initAttendanceId(){
+        session()->forget("attendance_id");
+        session()->get("attendance_id",[]);
     }
 };

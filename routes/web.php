@@ -13,12 +13,12 @@
 
 Route::get('/', function () {
     return view('/signin');
-});
+})->middleware("count");
 
 Route::group(['middleware' => ['google']], function () {
-    Route::get('/start',AttendanceController::class.'@start');
-    Route::get('/count',AttendanceController::class.'@count');
-    Route::get('/end',AttendanceController::class.'@end');
+    Route::get('/start',AttendanceController::class.'@start')->middleware("count");
+    Route::get('/count',AttendanceController::class.'@count')->middleware("start");
+    Route::get('/end',AttendanceController::class.'@end')->middleware("start","count");
 });
 
 //開始時刻と終了時刻のdb保存

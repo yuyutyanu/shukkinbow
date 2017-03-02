@@ -6,8 +6,8 @@ use App\Service\AttendanceService;
 use App\t_attendancerecord;
 
 class AttendanceController extends Controller{
-    public function start(){
-        session()->put("attendance_id",[]);//計測終了時に出勤情報検索するためのidの初期化
+    public function start(AttendanceService $service){
+        $service->initAttendanceId();   //勤務情報検索用　初期化
         return view('/start');
     }
 
@@ -22,10 +22,16 @@ class AttendanceController extends Controller{
 
 
     public function startTime(Request $request, AttendanceService $service, t_attendancerecord $attendance) {
+        $service->switchCountFlag();
         $service->setStartTime($request, $attendance);
+
+        return 0;
     }
 
     public function endtime(Request $request, AttendanceService $service, t_attendancerecord $attendance){
+        $service->switchCountFlag();
         $service->setEndTime($request, $attendance);
+
+        return 0;
     }
 }
