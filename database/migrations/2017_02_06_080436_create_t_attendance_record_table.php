@@ -15,6 +15,7 @@ class CreateTAttendanceRecordTable extends Migration
     {
         Schema::create('t_attendancerecord', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('user_id');
             $table->datetime('start_time');
             $table->datetime('end_time')->nullable();
             $table->unsignedInteger('location_id')->default(1);

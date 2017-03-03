@@ -23,29 +23,30 @@ class GoogleAuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(t_user $shukkinbow)
+    public function handleProviderCallback(t_user $shukkinbow_user)
     {
         $user = Socialite::driver('google')->user();
 
-        $arleady = $shukkinbow
+        $arleady = $shukkinbow_user
             ->where('google_id', $user->getId())
             ->first();
 
         //shukkinbowにユーザ情報を追加
         if (empty($arleady)) {
-            $shukkinbow->torken = $user->token;
-            $shukkinbow->refreshtoken = $user->refreshToken;
-            $shukkinbow->expiresin = $user->expiresIn;
-            $shukkinbow->google_id = $user->getId();
-            $shukkinbow->nickname = $user->getNickname();
-            $shukkinbow->name = $user->getName();
-            $shukkinbow->email = $user->getEmail();
-            $shukkinbow->avatar = $user->getAvatar();
-            $shukkinbow->company_id = 1;
-            $shukkinbow->save();
+            $shukkinbow_user->torken = $user->token;
+            $shukkinbow_user->refreshtoken = $user->refreshToken;
+            $shukkinbow_user->expiresin = $user->expiresIn;
+            $shukkinbow_user->google_id = $user->getId();
+            $shukkinbow_user->nickname = $user->getNickname();
+            $shukkinbow_user->name = $user->getName();
+            $shukkinbow_user->email = $user->getEmail();
+            $shukkinbow_user->avatar = $user->getAvatar();
+            $shukkinbow_user->company_id = 1;
+            $shukkinbow_user->save();
         }
 
         //他の場所でdbからユーザ情報を取り出すためにid保存
+        session()->forget('google_id');
         $google_id = session()->get('google_id', []);
         $google_id[] = $user->getId();
         session()->put('google_id', $google_id);

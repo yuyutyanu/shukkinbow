@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service\AttendanceService;
 use App\t_attendancerecord;
+use App\t_user;
 
 class AttendanceController extends Controller{
     public function start(AttendanceService $service){
@@ -21,9 +22,9 @@ class AttendanceController extends Controller{
     }
 
 
-    public function startTime(Request $request, AttendanceService $service, t_attendancerecord $attendance) {
+    public function startTime(Request $request, AttendanceService $service, t_attendancerecord $attendance, t_user $shukkinbow_user) {
         $service->switchCountFlag();
-        $service->setStartTime($request, $attendance);
+        $service->setStartTime($request, $attendance, $shukkinbow_user);
         $service->setLocation($request, $attendance);
 
         return 0;

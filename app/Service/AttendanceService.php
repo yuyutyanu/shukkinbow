@@ -5,7 +5,13 @@ use Illuminate\Http\Request;
 
 class AttendanceService
 {
-    public function setStartTime(Request $request,$attendance) {
+    public function setStartTime(Request $request, $attendance, $shukkinbow_user) {
+        $google_id = session()->get('google_id', []);
+        $user = $shukkinbow_user
+            ->where('google_id', $google_id)
+            ->first();
+
+        $attendance->user_id = $user->id;
         $attendance->start_time = $request->get("start_time");
         $attendance->end_time = null;
         $attendance->save();
@@ -15,6 +21,7 @@ class AttendanceService
         $attendance_id[] = $attendance->id;
         session()->put("attendance_id",$attendance_id);
     }
+
     public function setLocation(Request $request, $attendance){
         if ($request->get("work_location") === "office"){
             $attendance->location_id = 1;
