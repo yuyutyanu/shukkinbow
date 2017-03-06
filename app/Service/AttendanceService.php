@@ -42,17 +42,16 @@ class AttendanceService
         $this->attendance->save();
     }
 
-    public function getCountTime($current_time){
+    public function getStartTime(){
         $attendance_id = session()->get('attendance_id',[]);
 
         $attendance_info = $this->attendance
             ->where('id',$attendance_id)
             ->first();
 
-        $time = strtotime($current_time) - strtotime($attendance_info->start_time);
-        $time = date('H:i:s', $time);
+        $start_time = $attendance_info->start_time;
 
-        return $time;
+        return $start_time;
     }
 
     public function setEndTime(Request $request) {

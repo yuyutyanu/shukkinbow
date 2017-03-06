@@ -24,7 +24,7 @@ Route::group(['middleware' => ['google']], function () {
 
 //ロジック
 Route::get('/starttime',AttendanceController::class.'@startTime')->middleware("count");
-Route::get('/counttime',AttendanceController::class.'@countTime');
+Route::get('/countinfo',AttendanceController::class.'@countInfo');
 Route::post('/endtime',AttendanceController::class."@endTime")->middleware("start");
 
 //socialite (google)

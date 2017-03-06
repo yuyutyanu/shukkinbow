@@ -5,7 +5,7 @@
 
 @section('top')
     <div class="time-wrapper">
-        <p class="count_work_time" id="count_up"></p>
+        <p class="count_work_time" id="count_up">00:00:00</p>
     </div>
 @endsection
 
@@ -18,8 +18,7 @@
 
 @section('bottom')
         <div class="stop"><button onclick="workEnd()">STOP</button></div>
-
         <script>
-            countUp();
+            getCountInfo();
         </script>
 @endsection

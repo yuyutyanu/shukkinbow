@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Worklocation extends Model
+class WorkLocation extends Model
 {
     protected $table = 'm_work_location';
 

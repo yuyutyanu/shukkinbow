@@ -32,10 +32,9 @@ class AttendanceController extends Controller{
         $this->service->setStartTime($request);
         $this->service->setLocation($request);
     }
-    public function countTime(Request $request){
-        $current_time = $request->get("current_time");
-        $current_time = $this->service->getCountTime($current_time);
-        return $current_time;
+    public function CountInfo(){
+        $start_time = $this->service->getStartTime();
+        return $start_time;
     }
 
     public function endtime(Request $request){
