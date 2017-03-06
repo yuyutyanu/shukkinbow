@@ -5,7 +5,7 @@
 
 @section('top')
     <div class="time-wrapper">
-        <p class="count_work_time" id="count_up">00:00:00</p>
+        <p class="count_work_time" id="count_up"></p>
     </div>
 @endsection
 
