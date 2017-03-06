@@ -41,7 +41,7 @@ function getCurrentTime(){
 
 
 function workStart() {
-    $.get("/starttime",
+    $.post("/starttime",
         {
             start_time: date + " " + time,
             work_location : work_location
