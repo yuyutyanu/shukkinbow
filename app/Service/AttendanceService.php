@@ -2,39 +2,50 @@
 namespace App\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\User;
+use App\Attendancerecord;
 
 class AttendanceService
 {
-    public function setStartTime(Request $request, $attendance, $shukkinbow_user) {
+
+    public $user;
+    public $attendance;
+
+    function __construct(User $user, Attendancerecord $attendance){
+        $this->user = $user;
+        $this->attendance = $attendance;
+    }
+
+    public function setStartTime(Request $request) {
         $google_id = session()->get('google_id', []);
-        $user = $shukkinbow_user
+        $user = $this->user
             ->where('google_id', $google_id)
             ->first();
 
-        $attendance->user_id = $user->id;
-        $attendance->start_time = $request->get("start_time");
-        $attendance->end_time = null;
-        $attendance->save();
+        $this->attendance->user_id = $user->id;
+        $this->attendance->start_time = $request->get("start_time");
+        $this->attendance->end_time = null;
+        $this->attendance->save();
 
         //開始時刻を入れたレコードに終了時刻を入れるためのid
         $attendance_id = session()->get("attendance_id",[]);
-        $attendance_id[] = $attendance->id;
+        $attendance_id[] = $this->attendance->id;
         session()->put("attendance_id",$attendance_id);
     }
 
-    public function setLocation(Request $request, $attendance){
+    public function setLocation(Request $request){
         if ($request->get("work_location") === "office"){
-            $attendance->location_id = 1;
+            $this->attendance->location_id = 1;
         }else{
-            $attendance->location_id = 2;
+            $this->attendance->location_id = 2;
         }
-        $attendance->save();
+        $this->attendance->save();
     }
 
-    public function getCountTime($attendance,$current_time){
+    public function getCountTime($current_time){
         $attendance_id = session()->get('attendance_id',[]);
 
-        $attendance_info = $attendance
+        $attendance_info = $this->attendance
             ->where('id',$attendance_id)
             ->first();
 
@@ -44,18 +55,18 @@ class AttendanceService
         return $time;
     }
 
-    public function setEndTime(Request $request,$attendance) {
+    public function setEndTime(Request $request) {
         $attendance_id = session()->get('attendance_id',[]);
 
-        $attendance
+        $this->attendance
             ->where('id',$attendance_id)
             ->update(['end_time' => $request->get('end_time')]);
     }
 
-    public function getAttendanceInfo($attendance){
+    public function getAttendanceInfo(){
         $attendance_id = session()->get('attendance_id',[]);
 
-        $attendance_info = $attendance
+        $attendance_info = $this->attendance
             ->where('id',$attendance_id)
             ->first();
 
@@ -88,4 +99,4 @@ class AttendanceService
         session()->forget("attendance_id");
         session()->get("attendance_id",[]);
     }
-};
+}
