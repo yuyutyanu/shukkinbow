@@ -68,8 +68,8 @@ function countUp() {
     getToday();
     modTimeFormat();
 
-    var current =  new Date(date+" "+time);
-    var start = new Date(start_time);
+    var current =  new Date(date.replace(/-/g,"/")+" "+time);
+    var start = new Date(start_time.replace(/-/g,"/"));
 
     current = current.getTime();
     start = start.getTime();
