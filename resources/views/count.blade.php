@@ -19,6 +19,8 @@
 @section('bottom')
         <div class="stop"><button onclick="workEnd()">STOP</button></div>
         <script>
-            getCountInfo();
+            $(document).ready( function(){
+                getCountInfo()
+            });
         </script>
 @endsection

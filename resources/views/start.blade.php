@@ -34,7 +34,9 @@
     </div>
 
     <script>
-        document.body.onload = getCurrentTime;
+        $(document).ready( function(){
+            getCurrentTime();
+        });
     </script>
     <script type="text/javascript" src="/js/turnBox.js"></script>
 @endsection
