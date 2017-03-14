@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\WorkLocation;
 use Carbon\Carbon;
-
 class GoogleAppScriptController extends Controller
 {
     function attendance(User $user,WorkLocation $work_location){
@@ -16,8 +15,12 @@ class GoogleAppScriptController extends Controller
 
         foreach ($users as $user) {
 
-            // userごとの勤務情報を取得
-            $recodes = $user->attendancerecord()->where('start_time','like',Carbon::now()->year.'-_'.Carbon::now()->month.'%')->get();
+            // userごとの今月の勤務情報を取得
+            $recodes = $user->attendancerecord()
+                ->get();
+               // ->where('start_time','like',(string)Carbon::now()->year.'-_'.(string)Carbon::now()->month.'%') 今月の部分、ローカルではうごくがherokuで動かず
+
+
             $name = $user->name;
 
             foreach ($recodes as $index => $recode){
@@ -31,7 +34,6 @@ class GoogleAppScriptController extends Controller
                 $attendance[$index]["location"] = $work_location->location;
                 $attendance[$index]["start_day"] = $start_datetime->day;
                 $attendance[$index]["start_time"] = $start_datetime->hour.":".$start_datetime->minute.":".$start_datetime->second;
-                $attendance[$index]["end_day"] = $end_datetime->day;
                 $attendance[$index]["end_time"] = $end_datetime->hour.":".$end_datetime->minute.":".$end_datetime->second;
             }
         }
