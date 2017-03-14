@@ -3,13 +3,16 @@ namespace App\Service;
 use Illuminate\Http\Request;
 use App\User;
 use Socialite;
+use App\Attendancerecord;
 
 class GoogleAuthService
 {
     public $user;
+    public $attendance;
 
-    function __construct(User $user){
+    function __construct(User $user, Attendancerecord $attendance){
         $this->user = $user;
+        $this->attendance = $attendance;
     }
 
     public function addUser($gmail_user){

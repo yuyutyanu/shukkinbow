@@ -62,7 +62,7 @@ class AttendanceService
             ->update(['end_time' => $request->get('end_time')]);
     }
 
-    public function getAttendanceInfo(){
+    public function getAttendanceResult(){
         $attendance_id = session()->get('attendance_id',[]);
 
         $attendance_info = $this->attendance
@@ -94,8 +94,49 @@ class AttendanceService
         session()->put("count_flag",$count_flag);
     }
 
+
     public function initAttendanceId(){
         session()->forget("attendance_id");
         session()->get("attendance_id",[]);
+    }
+
+
+    public function takeOverCount(){
+
+        $google_id = session()->get('google_id', []);
+
+        $user = $this->user->where('google_id',$google_id)->first();
+
+        $current_attendance =$this->attendance
+            ->where('user_id',$user->id)
+            ->orderby('created_at','desc')
+            ->first();
+
+        //過去に勤務したことがあるかの確認
+        if(is_null($current_attendance)){return 0;}
+
+        //違う端末で勤務中、もしくは勤務中にsessionが切れた場合にsessionに必要な情報を入れて計測を継続
+        if(is_null($current_attendance->end_time)) {
+            $this->switchCountFlag();
+
+            $attendance_id = session()->get("attendance_id", []);
+            $attendance_id[] = $current_attendance->id;
+            session()->put("attendance_id", $attendance_id);
+
+            return redirect('count');
+        }
+    }
+
+    public function alreadyEnd(){
+        $attendance_id = session()->get('attendance_id',[]);
+
+        $attendance_info = $this->attendance
+            ->where('id',$attendance_id)
+            ->first();
+
+        if(!is_null($attendance_info->end_time)){
+            return true;
+        }
+        return false;
     }
 }

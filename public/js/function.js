@@ -98,7 +98,7 @@ function workEnd() {
             end_time: date+" "+time,
             working_time:timer,
         }
-    ).done(function(){
+    ).done(function(data){
         document.cookie = 'timer = ' + false
         location.href="/end"
     });
