@@ -8,7 +8,7 @@ class Company extends Model
 {
     protected $table = 'm_company';
 
-    public function t_user(){
-        return $this->hasMany('App\t_user','company_id');
+    public function user(){
+        return $this->hasMany('App\User','company_id');
     }
 }

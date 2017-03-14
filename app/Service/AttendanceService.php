@@ -16,6 +16,7 @@ class AttendanceService
         $this->attendance = $attendance;
     }
 
+    //勤務開始時刻をdbにセット
     public function setStartTime(Request $request) {
         $google_id = session()->get('google_id', []);
         $user = $this->user
@@ -27,12 +28,13 @@ class AttendanceService
         $this->attendance->end_time = null;
         $this->attendance->save();
 
-        //開始時刻を入れたレコードに終了時刻を入れるためのid
+        //現在の勤務情報を取得するためのIDをsession変数に保存
         $attendance_id = session()->get("attendance_id",[]);
         $attendance_id[] = $this->attendance->id;
         session()->put("attendance_id",$attendance_id);
     }
 
+    //勤務地をセット
     public function setLocation(Request $request){
         if ($request->get("work_location") === "office"){
             $this->attendance->location_id = 1;
@@ -42,6 +44,7 @@ class AttendanceService
         $this->attendance->save();
     }
 
+    //勤務開始時刻を取得
     public function getStartTime(){
         $attendance_id = session()->get('attendance_id',[]);
 
@@ -54,6 +57,7 @@ class AttendanceService
         return $start_time;
     }
 
+    //終了時刻をdbにセット
     public function setEndTime(Request $request) {
         $attendance_id = session()->get('attendance_id',[]);
 
@@ -62,6 +66,7 @@ class AttendanceService
             ->update(['end_time' => $request->get('end_time')]);
     }
 
+    // 勤務結果を「開始時刻、終了時刻、労働時間」に整形する
     public function getAttendanceResult(){
         $attendance_id = session()->get('attendance_id',[]);
 
@@ -101,6 +106,7 @@ class AttendanceService
     }
 
 
+    //サインインしたユーザが違う端末で計測していた場合にその情報を引き継ぐ
     public function takeOverCount(){
 
         $google_id = session()->get('google_id', []);
@@ -115,7 +121,7 @@ class AttendanceService
         //過去に勤務したことがあるかの確認
         if(is_null($current_attendance)){return 0;}
 
-        //違う端末で勤務中、もしくは勤務中にsessionが切れた場合にsessionに必要な情報を入れて計測を継続
+        //終了時刻がnullのレコードがある場合、計測中とみなしてsessionに必要な情報を入れて計測を継続
         if(is_null($current_attendance->end_time)) {
             $this->switchCountFlag();
 
@@ -127,6 +133,7 @@ class AttendanceService
         }
     }
 
+    //違う端末ですでに計測終了しているかの確認
     public function alreadyEnd(){
         $attendance_id = session()->get('attendance_id',[]);
 

@@ -8,7 +8,7 @@ class WorkLocation extends Model
 {
     protected $table = 'm_work_location';
 
-    public function t_attendancerecord(){
-        return $this->hasMany('App\t_attendancerecord','location_id');
+    public function attendancerecord(){
+        return $this->hasMany('App\Attendancerecord','location_id');
     }
 }

@@ -26,16 +26,14 @@ class AttendanceController extends Controller{
         return view('end',compact('attendance_info'));
     }
 
-
     public function startTime(Request $request) {
         $this->attendance_service->takeOverCount();//違う端末ですでにカウントしている場合引き継ぐ
-        if(session('count_flag')){
-            return 0; //引き継いだらこれより下の処理をせずリターン
-        }
+        if(session('count_flag')){return 0;}//引き継いだらこれより下の処理をせずリターン
         $this->attendance_service->switchCountFlag();
         $this->attendance_service->setStartTime($request);
         $this->attendance_service->setLocation($request);
     }
+
     public function CountInfo(){
         $start_time = $this->attendance_service->getStartTime();
         return $start_time;
@@ -43,10 +41,7 @@ class AttendanceController extends Controller{
 
     public function endtime(Request $request){
         $this->attendance_service->switchCountFlag();
-
-        if($this->attendance_service->alreadyEnd()){
-            return 0; //違う端末ですでに計測終了している場合これより下の処理をせずリターン
-        }
+        if($this->attendance_service->alreadyEnd()){return 0;} //違う端末ですでに計測終了している場合これより下の処理をせずリターン
         $this->attendance_service->setEndTime($request);
     }
 }
