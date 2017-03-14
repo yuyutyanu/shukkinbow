@@ -10,12 +10,14 @@ class GoogleAppScriptController extends Controller
 {
     function attendance(User $user,WorkLocation $work_location){
 
+
         $users = $user->get();
+        $attendance = [];
 
         foreach ($users as $user) {
 
             // userごとの勤務情報を取得
-            $recodes = $user->attendancerecord()->get();
+            $recodes = $user->attendancerecord()->where('start_time','like',Carbon::now()->year.'-_'.Carbon::now()->month.'%')->get();
             $name = $user->name;
 
             foreach ($recodes as $index => $recode){
@@ -27,12 +29,8 @@ class GoogleAppScriptController extends Controller
 
                 $attendance[$index]["name"] = $name;
                 $attendance[$index]["location"] = $work_location->location;
-                $attendance[$index]["start_year"] = $start_datetime->year;
-                $attendance[$index]["start_month"] = $start_datetime->month;
                 $attendance[$index]["start_day"] = $start_datetime->day;
                 $attendance[$index]["start_time"] = $start_datetime->hour.":".$start_datetime->minute.":".$start_datetime->second;
-                $attendance[$index]["end_year"] = $end_datetime->year;
-                $attendance[$index]["end_month"] = $end_datetime->month;
                 $attendance[$index]["end_day"] = $end_datetime->day;
                 $attendance[$index]["end_time"] = $end_datetime->hour.":".$end_datetime->minute.":".$end_datetime->second;
             }
