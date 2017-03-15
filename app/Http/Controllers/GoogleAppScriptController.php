@@ -15,10 +15,9 @@ class GoogleAppScriptController extends Controller
 
         foreach ($users as $user) {
 
-            // userごとの今月の勤務情報を取得
+            // userごとの勤務情報を取得  (実装時は先月の情報を取りたい)
             $recodes = $user->attendancerecord()
                 ->get();
-               // ->where('start_time','like',(string)Carbon::now()->year.'-_'.(string)Carbon::now()->month.'%') 今月の部分、ローカルではうごくがherokuで動かず
 
 
             $name = $user->name;
@@ -33,6 +32,7 @@ class GoogleAppScriptController extends Controller
                 $attendance[$index]["name"] = $name;
                 $attendance[$index]["location"] = $work_location->location;
                 $attendance[$index]["start_day"] = $start_datetime->day;
+                $attendance[$index]["start_month"] = $start_datetime->month;
                 $attendance[$index]["start_time"] = $start_datetime->hour.":".$start_datetime->minute.":".$start_datetime->second;
                 $attendance[$index]["end_time"] = $end_datetime->hour.":".$end_datetime->minute.":".$end_datetime->second;
             }
