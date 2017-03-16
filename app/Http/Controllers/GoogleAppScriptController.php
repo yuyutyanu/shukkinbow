@@ -17,7 +17,6 @@ class GoogleAppScriptController extends Controller
 
             // userごとの勤務情報を取得  (実装時は先月の情報を取りたい)
             $recodes = $user->attendancerecord()
-                ->orderBy('start_time','desc')
                 ->get();
 
 
